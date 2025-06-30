@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
             final tasks = snapshot.data!;
-            tasks.sort((a, b) => b.index.compareTo(a.index));
             if (tasks.isEmpty) {
               return const Center(
                 child: Text(
