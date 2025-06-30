@@ -63,45 +63,6 @@ class DefaultPage extends StatelessWidget {
                   Navigator.pushNamed(context, '/newtask');
                 },
               ),
-              ListTile(
-                leading: const Icon(Icons.person, color: Colors.black),
-                title: const Text(
-                  'Account',
-                  style: TextStyle(
-                    fontFamily: 'Outfit',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, '/account');
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.info, color: Colors.black),
-                title: const Text(
-                  'About',
-                  style: TextStyle(
-                    fontFamily: 'Outfit',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, '/about');
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.settings, color: Colors.black),
-                title: const Text(
-                  'Settings',
-                  style: TextStyle(
-                    fontFamily: 'Outfit',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, '/settings');
-                },
-              ),
               const Divider(thickness: 1),
               ListTile(title: QuoteText()),
               const Divider(thickness: 1),
