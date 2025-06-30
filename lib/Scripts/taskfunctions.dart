@@ -70,6 +70,5 @@ Future<void> updateTaskOrder() async {
   String updatedJsonString = jsonEncode(
     tasks.map((task) => task.toJson()).toList(),
   );
-  print(updatedJsonString);
   await prefs.setString('tasks', updatedJsonString);
 }
