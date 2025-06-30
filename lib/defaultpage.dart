@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learningapp/API/quotes.dart';
+import 'package:learningapp/Scripts/quotes.dart';
+import 'package:learningapp/Scripts/taskfunctions.dart';
 
 class DefaultPage extends StatelessWidget {
   final String title;
@@ -8,6 +9,7 @@ class DefaultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    checkNullTask();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

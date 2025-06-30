@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:learningapp/Scripts/task.dart';
+import 'package:learningapp/Scripts/taskfunctions.dart';
 import 'package:learningapp/defaultpage.dart';
 
 class NewTaskPage extends StatelessWidget {
@@ -6,6 +8,8 @@ class NewTaskPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController titleController = TextEditingController();
+    TextEditingController descriptionController = TextEditingController();
     return DefaultPage(
       title: "Make a New Task",
       child: Container(
@@ -13,6 +17,7 @@ class NewTaskPage extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+              controller: titleController,
               style: const TextStyle(
                 fontFamily: 'Outfit',
                 fontWeight: FontWeight.w500,
@@ -25,6 +30,7 @@ class NewTaskPage extends StatelessWidget {
             ),
             SizedBox(height: 16),
             TextField(
+              controller: descriptionController,
               style: const TextStyle(
                 fontFamily: 'Outfit',
                 fontWeight: FontWeight.w500,
@@ -37,14 +43,33 @@ class NewTaskPage extends StatelessWidget {
             ),
             SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {
-                // Logic to save the new task
+              onPressed: () async {
+                addTask(
+                  Task(
+                    index: await getIndex(),
+                    title: titleController.text,
+                    description: descriptionController.text,
+                  ),
+                );
+                if (titleController.text.isEmpty ||
+                    descriptionController.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Please fill in both fields'),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+                  return;
+                }
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('New task created!'),
                     duration: Duration(seconds: 2),
                   ),
                 );
+                titleController.clear();
+                descriptionController.clear();
+                Navigator.pop(context); // Go back to the previous page
               },
               child: const Text(
                 'Create Task',
